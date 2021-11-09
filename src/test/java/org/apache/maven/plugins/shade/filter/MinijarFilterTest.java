@@ -74,7 +74,7 @@ public class MinijarFilterTest
 
         mf.finished();
 
-        verify( log, times( 1 ) ).info( logCaptor.capture() );
+        verify( log, times( 4 ) ).info( logCaptor.capture() );
 
         assertEquals( "Minimized 0 -> 0", logCaptor.getValue() );
 

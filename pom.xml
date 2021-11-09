@@ -1,5 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
+<!-- 
+  
+See https://github.com/apache/maven-shade-plugin/pull/83
+
+-->
+
+
 <!--
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements. See the NOTICE file
@@ -29,8 +36,8 @@
     <relativePath>../../pom/maven/maven-plugins/pom.xml</relativePath>
   </parent>
 
-  <artifactId>maven-shade-plugin</artifactId>
-  <version>3.3.1-SNAPSHOT</version>
+  <artifactId>maven-shade-plugin-gtm</artifactId>
+  <version>3.2.4</version>
   <packaging>maven-plugin</packaging>
 
   <name>Apache Maven Shade Plugin</name>

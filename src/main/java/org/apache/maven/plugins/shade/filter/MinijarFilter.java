@@ -121,16 +121,26 @@ public class MinijarFilter
 
     private void removeServices( final MavenProject project, final Clazzpath cp )
     {
+        log.info( new Throwable().getStackTrace()[0].getMethodName().concat( " entered" ) );
         boolean repeatScan;
         do
         {
             repeatScan = false;
+            log.info( "repeatScan set to false" );
             final Set<Clazz> neededClasses = cp.getClazzes();
             neededClasses.removeAll( removable );
+            int i = 0;
             try
             {
                 for ( final String fileName : project.getRuntimeClasspathElements() )
                 {
+                    log.info( "Classpath element[ " + i++ + "]: " + fileName );
+                    if ( new File( fileName ).isDirectory() ) 
+                    {
+                        log.info( "Not a JAR.  Ignoring classpath element '" + fileName + "'." );
+                        continue;
+                    }
+                    
                     try ( final JarFile jar = new JarFile( fileName ) )
                     {
                         for ( final Enumeration<JarEntry> entries = jar.entries(); entries.hasMoreElements(); )
@@ -170,6 +180,7 @@ public class MinijarFilter
                                     log.debug( className + " was not removed because it is a service" );
                                     removeClass( clazz );
                                     repeatScan = true; // check whether the found classes use services in turn
+                                    log.info( "repeatScan set to true" );
                                 }
                             }
                             catch ( final IOException e )
@@ -190,6 +201,7 @@ public class MinijarFilter
             }
         }
         while ( repeatScan );
+        log.info( new Throwable().getStackTrace()[0].getMethodName().concat( " exited" ) );
     }
 
     private void removeClass( final Clazz clazz )

@@ -1,3 +1,24 @@
+<!--
+ The sole purpose of this fork was just to instrument the shade plugin 
+ to see if there is some  way to avoid the repeated annoying warnings 
+ described by https://issues.apache.org/jira/browse/MSHADE-376
+
+ These warnings occur because the shade plugin plugin checks if a 
+ classpath element  is a jar, and if it is not, swallows useful error 
+ information, instead printing out a meaningless warning 'is a directory'.
+
+ The original bug was closed as 'not a bug' =D with the reported 
+ advised to seek therapy on the  mailing list.  Fixes have been proposed 
+ but apparently were not perfect enough.
+
+To use it, run 'mvn clean install' to build and install the modified 
+shade plugin into your local repo, then replace 
+'<artifactId>maven-shade-plugin</artifactId>' with
+'<artifactId>maven-shade-plugin-gtm</artifactId>'
+
+Then, observe the log info.
+-->
+
 <!---
  Licensed to the Apache Software Foundation (ASF) under one or more
  contributor license agreements.  See the NOTICE file distributed with
