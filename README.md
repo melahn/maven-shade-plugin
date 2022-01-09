@@ -4,7 +4,7 @@
  to see if there is some  way to avoid the repeated annoying warnings
  described by [MSHADE-376](https://issues.apache.org/jira/browse/MSHADE-376)
 
- These warnings occur because the shade plugin plugin checks if a
+ These warnings occur because the shade plugin checks if a
  classpath element  is a jar, and if it is not, swallows useful error
  information, instead printing out a meaningless warning 'is a directory'.
 
